@@ -15,14 +15,16 @@ using UnityEditor;
 
 
 //ベジェ曲線用
-namespace BezierCurve
+class Position
 {
-    public struct Position
-    {
-        public float x;
-        public float y;
-    }
+    public float x;
+    public float y;
 
+    public Position(float xx, float yy)
+    {
+        x = xx;
+        y = yy;
+    }
 }
 
 public class LiftingForceCalculation : MonoBehaviour
@@ -42,23 +44,26 @@ public class LiftingForceCalculation : MonoBehaviour
     [SerializeField] private float windPercent;   // 風倍率
     [SerializeField] private string debuglog;
 
-    private BezierCurve.Position[] point;
+    private Position[] pos;
+    private Position[] pos2;
 
     public void Start()
     {
-        point = new BezierCurve.Position[]
-        {
         //0～45°
-        new BezierCurve.Position {x = 0.0f, y = 0.0f},
-        new BezierCurve.Position {x = 45.0f, y = 0.0f},
-        new BezierCurve.Position {x = 30.0f, y = 75.0f},
-        new BezierCurve.Position {x = 45.0f, y = 100.0f},
-
+        pos = new Position[4]
+        {
+            new Position(0.0f, 0.0f),
+            new Position(40.0f, 0.0f),
+            new Position(40.0f, 0.0f),
+            new Position(45.0f, 100.0f),
+        };
         //46～180°
-        new BezierCurve.Position {x = 45.0f, y = 100.0f},
-        new BezierCurve.Position {x = 75.0f, y = 90.0f},
-        new BezierCurve.Position {x = 90.0f, y = 30.0f},
-        new BezierCurve.Position {x = 180.0f, y = 30.0f}
+        pos2 = new Position[4]
+        {
+            new Position(45.0f, 100.0f),
+            new Position(80.0f, 60.0f),
+            new Position(150.0f, 30.0f),
+            new Position(180.0f, 30.0f),
         };
     }
 
@@ -66,7 +71,6 @@ public class LiftingForceCalculation : MonoBehaviour
     {
 
         WindForceCalculation();
-
 
         //揚力計算
 
@@ -97,25 +101,20 @@ public class LiftingForceCalculation : MonoBehaviour
         va = Mathf.Abs(windAngle - shipAngle);
         if (va > 180.0f) { va = 360.0f - va; }    // 180度に換算
 
-        //ここまで完成
-
-        /*float b = va / 180.0f;
-        float a = 1.0f - b;*/
-        Debug.Log("aaa" + va);
         // (0%)0 ~ 45(100%)
-        if (va < 46.0f)
+        if (va <= 45.0f)
         {
             float b = va / 45.0f;
             float a = 1.0f - b;
-            windPercent =  (Mathf.Pow(a, 3) * point[0].y + 3 * Mathf.Pow(a, 2) * b * point[1].y + 3 * a * Mathf.Pow(b, 2) * point[2].y + Mathf.Pow(b, 3) * point[3].y);
+            windPercent =  (Mathf.Pow(a, 3) * pos[0].y + 3 * Mathf.Pow(a, 2) * b * pos[1].y + 3 * a * Mathf.Pow(b, 2) * pos[2].y + Mathf.Pow(b, 3) * pos[3].y);
             debuglog = "県内";
         }
-        // (100%)45 ~ 180(30%)
-        else
+        // (%)46 ~ 180(30%)
+        else if(va > 45)
         {
-            float b = va / 180.0f;
+            float b = (va - 45.0f) / 135.0f;
             float a = 1.0f - b;
-            windPercent = (Mathf.Pow(a, 3) * point[4].y + 3 * Mathf.Pow(a, 2) * b * point[5].y + 3 * a * Mathf.Pow(b, 2) * point[6].y + Mathf.Pow(b, 3) * point[7].y);
+            windPercent = (Mathf.Pow(a, 3) * pos2[0].y + 3 * Mathf.Pow(a, 2) * b * pos2[1].y + 3 * a * Mathf.Pow(b, 2) * pos2[2].y + Mathf.Pow(b, 3) * pos2[3].y);
             debuglog = "県外";
         }
     }
