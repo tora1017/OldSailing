@@ -26,7 +26,9 @@ public class SwipControl : MonoBehaviour
         else
         {
             onTouch = "none";
-        }
+			touchStartPos = new Vector3(0.0f, 0.0f, 0.0f);
+			touchEndPos = new Vector3(0.0f, 0.0f, 0.0f);
+		}
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
