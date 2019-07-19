@@ -10,7 +10,7 @@ public class SoloPlay : MonoBehaviour {
     [SerializeField]private GameObject Menu01;
 	
 	// Update is called once per frame
-	void Update () {
+	void Touch () {
         if (Input.GetMouseButtonUp(0))  // ソロプレイボタンが押されるとメインカメラに映す
         {
             if (MainCamera.transform.position.x >= SoloPlay00.transform.position.x)
