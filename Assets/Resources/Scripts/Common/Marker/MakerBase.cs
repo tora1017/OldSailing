@@ -11,15 +11,16 @@
 **********************************************************************************************/
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarkerBase : BaseObject
 {
-
-	protected GameObject markerObjName;       // @brief markerのオブジェクトの名前を取得
+    protected GameObject markerObjName;       // @brief markerのオブジェクトの名前を取得
 	protected int currentMarker;              // @brief 現在の配列番号
 	protected int currentHitMarker;           // @brief 現在の配列番号
 
 	protected List<GameObject> markerList;    // @brief markerのリスト
+	protected List<GameObject> lineMarkerList; // @brief lineMarkerのリスト
 	protected List<GameObject> hitMarkerList; // @brief hitMarkerのリスト
 
 	protected bool isGoal;            // @brief ゴールしたかどうか
@@ -59,6 +60,8 @@ public class MarkerBase : BaseObject
 	{
 		markerList = new List<GameObject>();
 
+        lineMarkerList = new List<GameObject>();
+
 		hitMarkerList = new List<GameObject>();
 
 		// 親オブジェクトを取得し
@@ -67,8 +70,14 @@ public class MarkerBase : BaseObject
 		// 取得した親オブジェクトの子も取得する(Marker)
 		markerList = GameObjectExtension.GetGameObject(markerObjName, "Marker");
 
+        //取得した親オブジェクトの子も取得する(AINormal) (PlayerのLineように使います)
+        lineMarkerList = GameObjectExtension.GetGameObject(markerObjName, "AINormal");
+
 		// 取得した親オブジェクトの子も取得する(GameObject)
 		hitMarkerList = GameObjectExtension.GetGameObject(markerObjName);
+
+        //　取得したブイの当り判定の棒を透明にする
+        GameObjectExtension.HideGameObject(markerObjName);
 
 		isGoal = false;
 
