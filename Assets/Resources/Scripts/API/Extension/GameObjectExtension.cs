@@ -176,6 +176,17 @@ public static class GameObjectExtension
         }
     }
     
+    /// <summary>
+    /// @brief GetGameObjectのoverload
+    ///        名前が指定されなかった場合、
+    ///        GameObjectが指定されたと仮定して、リストに格納する
+    /// </summary>>
+    public static void GetGameObject(GameObject obj, ref List<GameObject> allGameObject)
+    {
+        string str = "GameObject";
+        GetGameObject(obj, ref allGameObject, str);
+    }
+    
 	/// <summary>
     /// @brief GameObjectという名前のみリストに格納する
     /// </summary>>
@@ -194,4 +205,39 @@ public static class GameObjectExtension
     {
 		get { return ObjectNum; }
 	}
+
+    /// <summary>
+    /// @brief GameObjectのカラーを透明に変える関数
+    /// @note Markerで使用する予定()
+    /// </summary>
+    public static void HideGameObject(GameObject obj,string str)
+    {
+        Transform gameObject = obj.GetComponentInParent<Transform>();
+
+        foreach (Transform ob in gameObject)
+        {
+            if(ob.gameObject == null)
+            {
+                return;
+            }
+            if (ob.gameObject.name == str)
+            {
+                Color color = gameObject.GetComponent<Renderer>().material.color;
+                color.a = 0.0f;
+
+                gameObject.GetComponent<Renderer>().material.color = color;
+            }
+        }
+    }
+
+    /// <summary>
+    /// @breif HideGameObjectのoverload関数
+    /// @note 名前が指定されなかった場合、GameObjectとして、
+    /// </summary>
+    /// <param name="obj"></param>
+    public static void HideGameObject(GameObject obj)
+    {
+        string str = "GameObject";
+        HideGameObject(obj, str);
+    }
 }

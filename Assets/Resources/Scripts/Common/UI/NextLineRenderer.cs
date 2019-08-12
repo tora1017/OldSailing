@@ -40,8 +40,8 @@ public class NextLineRenderer : MarkerBase {
         lineRenderer = GetComponent<LineRenderer>();
 
         startPosition = playerObject.transform.position;
-        goalPosition = hitMarkerList[markerBase.CurrentMarker].gameObject.transform.position;
-        yondPosition = hitMarkerList[markerBase.CurrentMarker + 1].gameObject.transform.position;
+        goalPosition = lineMarkerList[markerBase.CurrentMarker].gameObject.transform.position;
+        yondPosition = lineMarkerList[markerBase.CurrentMarker + 1].gameObject.transform.position;
     }
     /// <summary>
     ///  @brief 更新処理
@@ -49,11 +49,11 @@ public class NextLineRenderer : MarkerBase {
     private void StraightLineUpdate()
     {
         startPosition = playerObject.transform.position;
-        goalPosition = hitMarkerList[markerBase.CurrentMarker].gameObject.transform.position;
+        goalPosition = lineMarkerList[markerBase.CurrentMarker].gameObject.transform.position;
 
-        if(hitMarkerList[markerBase.CurrentMarker].gameObject.tag != "goal")
+        if(lineMarkerList[markerBase.CurrentMarker].gameObject.tag != "goal")
         {
-            yondPosition = hitMarkerList[markerBase.CurrentMarker + 1].gameObject.transform.position;
+            yondPosition = lineMarkerList[markerBase.CurrentMarker + 1].gameObject.transform.position;
         }
     }
 
