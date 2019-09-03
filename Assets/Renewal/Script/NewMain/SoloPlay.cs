@@ -43,18 +43,18 @@ public class SoloPlay : MonoBehaviour {
             }
 
             // ソロプレイモードのUI移動の処理
-            if (SoloPlay00.transform.position.x < )
-            {
-                var diff = Time.timeSinceLevelLoad - startTime;
-                if (diff > time)
-                {
-                    transform.position = endPosition;
-                    enabled = false;
-                }
+            //if (SoloPlay00.transform.position.x < )
+            //{
+            //    var diff = Time.timeSinceLevelLoad - startTime;
+            //    if (diff > time)
+            //    {
+            //        transform.position = endPosition;
+            //        enabled = false;
+            //    }
 
-                var rate = diff / time;
-                transform.position = Vector3.Lerp(startPosition, endPosition, rate);
-            }
+            //    var rate = diff / time;
+            //    transform.position = Vector3.Lerp(startPosition, endPosition, rate);
+            //}
         }
         
     }
