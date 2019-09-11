@@ -53,25 +53,15 @@ public class LiftingForceCalculation : MonoBehaviour
 	[SerializeField] private float WindReceived = 0.0f;    // 受ける風
 
 	// Debug用
-<<<<<<< HEAD
-	//[SerializeField] Text windAngleText = null;
-	//[SerializeField] Text shipSpeedText = null;
-	//[SerializeField] Text kaomoziText = null;
-=======
 	[SerializeField] Text windAngleText = null;
 	[SerializeField] Text shipSpeedText = null;
 	[SerializeField] Text kaomoziText = null;
 	[SerializeField] bool onDebug = false;
 	[SerializeField] float time =0;
->>>>>>> Renewal
 
 
 	public void Start()
 	{
-<<<<<<< HEAD
-=======
-
->>>>>>> Renewal
 		// ベジェ曲線用の制御点の初期化
 			//0～45°
 		pos = new Position[4]
@@ -103,11 +93,8 @@ public class LiftingForceCalculation : MonoBehaviour
 
 	void Update()
 	{
-<<<<<<< HEAD
-=======
 		time += Time.deltaTime;
 		if (time < 10.0f) { return; }
->>>>>>> Renewal
 		//タップされているか（帆の面積を変える）
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -144,11 +131,7 @@ public class LiftingForceCalculation : MonoBehaviour
 		}
 		this.transform.Translate(Vector3.forward * -shipspeed * Time.deltaTime * 30);   // 船の進行方向に対して加算
 
-<<<<<<< HEAD
-		//DebugUpdater();
-=======
 		DebugUpdater();
->>>>>>> Renewal
 	}
 
 	/// <summary>
@@ -187,33 +170,6 @@ public class LiftingForceCalculation : MonoBehaviour
 			windPercent = (Mathf.Pow(a, 3) * pos3[0].y + 3 * Mathf.Pow(a, 2) * b * pos3[1].y + 3 * a * Mathf.Pow(b, 2) * pos3[2].y + Mathf.Pow(b, 3) * pos3[3].y) / 100;
 		}
 	}
-
-<<<<<<< HEAD
-	//private void DebugUpdater()
-	//{
-	//	windAngleText.text = "風との角度：" + Mathf.Round(trans_va).ToString();
-	//	shipSpeedText.text = "船の速度：" + (Mathf.Round(shipspeed * 100) / 100).ToString();
-	//	// 0 ~ 45
-	//	if (trans_va <= 45.0f)
-	//	{
-	//		kaomoziText.text = "(-_-)zzz";
-	//	}
-	//	// 80 ~ 100
-	//	else if (80 < trans_va && trans_va <= 100)
-	//	{
-	//		kaomoziText.text = "!(^^)!";
-	//	}
-	//	// 165 ~ 180
-	//	else if (165 < trans_va && trans_va <= 180)
-	//	{
-	//		kaomoziText.text = "( ;∀;)";
-	//	}
-	//	else
-	//	{
-	//		kaomoziText.text = "(*'ω'*)";
-	//	}
-	//}
-=======
 	private void DebugUpdater()
 	{
 		if (onDebug) { return; }
@@ -239,7 +195,6 @@ public class LiftingForceCalculation : MonoBehaviour
 			kaomoziText.text = "(*'ω'*)";
 		}
 	}
->>>>>>> Renewal
 
 	public float GetAngle(Vector3 ship, Vector3 wind)
 	{
