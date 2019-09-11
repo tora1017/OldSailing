@@ -33,7 +33,7 @@ public class LiftingForceCalculation : MonoBehaviour
 
 	// 揚力計算
 	[SerializeField] private float l = 0.0f;						// 揚力（Lift）
-	[SerializeField] private float p = 1.0f;						// 風の密度
+	[SerializeField] private float p = 1.293f;						// 風の密度
 	[SerializeField] private float v = 0.0f;						// 相対速度（Vector）
 	[SerializeField] private float s = 0.0f;						// 風が当たる帆の面積（Surface）
 	[SerializeField] private float cl = 1.12f;						// 揚力係数（Coeffient of Lift）
