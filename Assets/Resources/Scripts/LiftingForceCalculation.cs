@@ -53,8 +53,8 @@ public class LiftingForceCalculation : MonoBehaviour
 	[SerializeField] private float WindReceived = 0.0f;    // 受ける風
 
 	// Debug用
-	//[SerializeField] Text windAngleText = null;
-	//[SerializeField] Text shipSpeedText = null;
+	[SerializeField] Text windAngleText = null;
+	[SerializeField] Text shipSpeedText = null;
 	[SerializeField] Text kaomoziText = null;
 	[SerializeField] bool onDebug = false;
 	[SerializeField] float time =0;
@@ -95,7 +95,7 @@ public class LiftingForceCalculation : MonoBehaviour
 	void Update()
 	{
 		time += Time.deltaTime;
-		if (time < 5.0f) { return; }
+		if (time < 10.0f) { return; }
 		//タップされているか（帆の面積を変える）
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -175,8 +175,8 @@ public class LiftingForceCalculation : MonoBehaviour
 	private void DebugUpdater()
 	{
 		if (onDebug) { return; }
-		//windAngleText.text = "風との角度：" + Mathf.Round(trans_va).ToString();
-		//shipSpeedText.text = "船の速度：" + (Mathf.Round(shipspeed * 100) / 100).ToString();
+		windAngleText.text = "相対角度：" + Mathf.Round(trans_va).ToString();
+		shipSpeedText.text = "船の速度：" + (Mathf.Round(shipspeed * 1000) / 1000).ToString();
 		// 0 ~ 45
 		if (trans_va <= 45.0f)
 		{
