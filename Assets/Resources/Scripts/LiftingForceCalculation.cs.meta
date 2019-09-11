@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Scripts/LiftingForceCalculation.cs.meta
 guid: 5e09cbd22f69a0b48ba385dbf8af0bde
+=======
+guid: d5554826bff9abc4ebaf16d25f15730d
+>>>>>>> Renewal:Assets/Resources/Scripts/LiftingForceCalculation.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
