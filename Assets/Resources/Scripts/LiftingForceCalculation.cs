@@ -32,21 +32,21 @@ public class LiftingForceCalculation : MonoBehaviour
 	[SerializeField] private GameObject windObject = null;
 
 	// 揚力計算
-	[SerializeField] private float l = 0.0f;						// 揚力（Lift）
-	[SerializeField] private float p = 1.293f;						// 風の密度
-	[SerializeField] private float v = 0.0f;						// 相対速度（Vector）
-	[SerializeField] private float s = 0.0f;						// 風が当たる帆の面積（Surface）
-	[SerializeField] private float cl = 1.12f;						// 揚力係数（Coeffient of Lift）
-	[SerializeField, Range(0, 1.0f)] private float windPower;		// 風力
+	[SerializeField] private float l = 0.0f;                        // 揚力（Lift）
+	[SerializeField] private float p = 1.293f;                      // 風の密度
+	[SerializeField] private float v = 0.0f;                        // 相対速度（Vector）
+	[SerializeField] private float s = 0.0f;                        // 風が当たる帆の面積（Surface）
+	[SerializeField] private float cl = 1.12f;                      // 揚力係数（Coeffient of Lift）
+	[SerializeField, Range(0, 1.0f)] private float windPower;       // 風力
 
 	// 風向きによる風の影響を表すベジェ曲線の制御点
-	[SerializeField] private float va = 0.0f;			// 船と風との相対速度
-	[SerializeField] private float shipAngle = 0.0f;	// 船の向き
-	[SerializeField] private float trans_va = 0.0f;		// 船の向きと風との相対速度
-	private Position[] pos = null;						// 0-45
-	private Position[] pos2 = null;						// 46-90
-	private Position[] pos3 = null;						// 91-180
-	[SerializeField] private float windPercent = 0.0f;	// 風倍率
+	[SerializeField] private float va = 0.0f;           // 船と風との相対速度
+	[SerializeField] private float shipAngle = 0.0f;    // 船の向き
+	[SerializeField] private float trans_va = 0.0f;     // 船の向きと風との相対速度
+	private Position[] pos = null;                      // 0-45
+	private Position[] pos2 = null;                     // 46-90
+	private Position[] pos3 = null;                     // 91-180
+	[SerializeField] public float windPercent { get; private set; }	// 風倍率
 
 	// 合力計算
 	[SerializeField] private float shipspeed = 0.0f;       // 船の速度
