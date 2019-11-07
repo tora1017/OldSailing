@@ -9,7 +9,7 @@ public class Controller : MonoBehaviour
     void Update()
 	{
 		if (InputKey()) { return; }
-		//GyroUpdata();
+		GyroUpdata();
 	}
 
 	private bool InputKey()
